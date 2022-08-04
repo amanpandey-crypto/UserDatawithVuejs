@@ -5,10 +5,18 @@
     </header>
     <div class="flex-container">
       <div class="flex-child">
-        <user-data></user-data>
+        <p><strong>Add User</strong></p>
+        <user-data @add-user="addUser"></user-data>
       </div>
       <div class="flex-child">
-        <active-user></active-user>
+        <p><strong>Active User</strong></p>
+        <active-user
+        v-for="user in users"
+        :key="user.id"
+        :id="user.id"
+        :name="user.name"
+        :age="user.age"
+        ></active-user>
       </div>
     </div> 
   </section>
@@ -18,16 +26,29 @@
 export default {
   data() {
     return {
-      friends: [
+      users: [
         {
           id: '1',
           name: 'Abhinav Pandey',
-          phone: '+91-8234567890',
-          email: 'abhi@localhost.com',
-          isFavorite: true,
+          age:'18',
+        },
+        {
+          id: '2',
+          name: 'Aman Pandey',
+          age:'20',
         },
       ],
     };
+  },
+  methods: {
+    addUser(name, age) {
+      const newUser = {
+        id: new Date().toISOString(),
+        name: name,
+        age: age,
+      };
+      this.users.push(newUser);
+    },
   },
 };
 </script>
@@ -102,7 +123,7 @@ header {
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
-  width: 90%;
+  width: 60%;
   max-width: 40rem;
 }
 

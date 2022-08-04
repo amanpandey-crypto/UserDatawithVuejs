@@ -1,23 +1,29 @@
 <template>
-    <p>Active User</p>
-    <li>
-        <ul>
-            <li>
-                <strong>Name:</strong>
-                <strong>Age:</strong>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <strong>Name:</strong>
-                <strong>Age:</strong>
-            </li>
-        </ul>
-    </li>
+    <ul>
+        <li>
+            <strong>Name: </strong>
+            {{ name }}<br><br>
+            <strong>Age: </strong>{{ age }}
+        </li>
+    </ul>
 </template>
 
 <script>
 export default {
+    props: {
+        id: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true,
+        },
+        age: {
+            type: String,
+            required: true,
+        },
+    },
     data() {
         return {
 
